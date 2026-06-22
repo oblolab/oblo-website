@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oblò – Marketing che funziona. Tecnologia che semplifica.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lime:#8DC63F; --green:#0E6F57; --green-bg:#E4F5EE;
+  --navy:#1B2B4A; --ink:#1A1A18; --mid:#5A5A58;
+  --muted:#8E8E8C; --border:#E0DED8; --bg:#F6F5F1;
+  --white:#FFFFFF; --amber:#B07010;
+  --ff-serif:'Playfair Display',Georgia,serif;
+  --ff-sans:'DM Sans',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-sans);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+section{padding:88px 0}
+.s-white{background:var(--white)}
+.s-dark{background:var(--navy)}
+.s-ink{background:var(--ink)}
+.s-green{background:var(--green)}
+
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:14px}
+.eyebrow-lt{color:var(--lime)}
+.h1{font-family:var(--ff-serif);font-size:clamp(36px,5vw,62px);font-weight:700;line-height:1.08;letter-spacing:-.025em}
+.h2{font-family:var(--ff-serif);font-size:clamp(26px,3.5vw,42px);font-weight:700;line-height:1.12;letter-spacing:-.02em}
+.h3{font-family:var(--ff-serif);font-size:20px;font-weight:700;line-height:1.2}
+.lead{font-size:18px;line-height:1.65;color:var(--mid)}
+.sm{font-size:14px;line-height:1.6;color:var(--mid)}
+.cap{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:99;background:rgba(246,245,241,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{display:flex;align-items:center;gap:9px}
+.logo-mark{width:30px;height:30px;flex-shrink:0}
+.logo-word{font-family:var(--ff-serif);font-size:21px;font-weight:700;color:var(--navy);letter-spacing:-.01em}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:13.5px;color:var(--mid);transition:color .15s}
+.nav-links a:hover{color:var(--green)}
+.nav-pill{background:var(--green)!important;color:var(--white)!important;padding:8px 20px;border-radius:100px;font-weight:500!important;transition:background .15s!important}
+.nav-pill:hover{background:var(--navy)!important}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:100px;font-size:15px;font-weight:500;transition:all .15s;cursor:pointer;border:none}
+.btn-g{background:var(--green);color:var(--white)}
+.btn-g:hover{background:var(--navy);transform:translateY(-1px)}
+.btn-out{border:1.5px solid var(--border);color:var(--ink);background:transparent}
+.btn-out:hover{border-color:var(--green);color:var(--green)}
+.btn-w{background:var(--white);color:var(--green)}
+.btn-w:hover{background:var(--lime);color:var(--navy)}
+
+/* HERO */
+.hero{padding:96px 0 80px;background:var(--bg);overflow:hidden;position:relative}
+.hero::after{content:'';position:absolute;top:-60px;right:-100px;width:480px;height:480px;background:radial-gradient(ellipse,rgba(141,198,63,.07) 0%,transparent 70%);pointer-events:none}
+.hero-g{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:var(--green-bg);border:1px solid rgba(14,111,87,.18);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:500;color:var(--green);margin-bottom:26px}
+.hero-badge i{width:6px;height:6px;border-radius:50%;background:var(--lime);display:inline-block;flex-shrink:0}
+.hero-h{margin-bottom:22px}
+.hero-h em{font-style:italic;color:var(--green)}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
+.hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.hc{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 22px;transition:border-color .15s}
+.hc:hover{border-color:var(--lime)}
+.hc-accent{background:var(--green);border-color:var(--green)}
+.hc-num{font-family:var(--ff-serif);font-size:44px;font-weight:900;color:var(--green);line-height:1;margin-bottom:7px}
+.hc-accent .hc-num{color:var(--lime)}
+.hc-lbl{font-size:13px;color:var(--mid);line-height:1.45}
+.hc-accent .hc-lbl{color:rgba(255,255,255,.72)}
+
+/* TAGLINE BAR */
+.tbar{background:var(--navy);padding:18px 0;overflow:hidden;position:relative}
+.tbar::before,.tbar::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.tbar::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
+.tbar::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+.tbar-track{display:flex;align-items:center;width:max-content;animation:marquee 28s linear infinite}
+.tbar-track:hover{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tpill{display:inline-flex;align-items:center;gap:7px;padding:6px 16px;border:1px solid rgba(141,198,63,.25);border-radius:100px;font-size:12.5px;color:rgba(255,255,255,.72);white-space:nowrap;margin:0 6px;flex-shrink:0;transition:all .15s}
+.tpill:hover{border-color:var(--lime);color:var(--white)}
+.tpill-dot{width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0}
+.tsep{color:rgba(255,255,255,.18);font-size:16px;padding:0 3px;flex-shrink:0}
+
+/* PROBLEMA */
+.prob-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.stat-row{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:start;padding:28px 0;border-bottom:1px solid var(--border)}
+.stat-row:last-child{border-bottom:none}
+.stat-n{font-family:var(--ff-serif);font-size:54px;font-weight:900;color:var(--green);line-height:1}
+.stat-ttl{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:5px}
+.stat-desc{font-size:13.5px;color:var(--mid);line-height:1.55}
+
+/* SERVIZI */
+.srv-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:52px}
+.srv{background:var(--white);padding:32px 28px;transition:background .15s}
+.srv:hover{background:var(--bg)}
+.srv-ico{width:42px;height:42px;border-radius:10px;background:var(--green-bg);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:18px}
+.srv-t{font-family:var(--ff-serif);font-size:18px;font-weight:700;color:var(--navy);margin-bottom:9px;line-height:1.2}
+.srv-d{font-size:13.5px;color:var(--mid);line-height:1.6}
+.srv-tag{display:inline-block;margin-top:14px;font-size:11px;font-weight:500;color:var(--green);letter-spacing:.06em;text-transform:uppercase}
+
+/* STEPS */
+.steps-g{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:52px}
+.step{background:var(--white);padding:32px 24px;border-right:1px solid var(--border)}
+.step:last-child{border-right:none}
+.step-n{font-family:var(--ff-serif);font-size:48px;font-weight:900;color:var(--border);line-height:1;margin-bottom:18px;display:block}
+.step-t{font-size:15px;font-weight:500;color:var(--navy);margin-bottom:8px}
+.step-d{font-size:13.5px;color:var(--mid);line-height:1.6;margin-bottom:14px}
+.step-time{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;background:var(--green-bg);border-radius:100px;font-size:12px;font-weight:500;color:var(--green)}
+
+/* PACCHETTI */
+.piani-g{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:52px;align-items:start}
+.piano{border:1.5px solid var(--border);border-radius:12px;padding:28px 22px;background:var(--white);position:relative}
+.piano-feat{border-color:var(--green);background:var(--green);color:var(--white);transform:translateY(-10px);box-shadow:0 16px 48px rgba(14,111,87,.22)}
+.piano-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--lime);color:var(--navy);font-size:10.5px;font-weight:700;padding:3px 13px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.piano-name{font-family:var(--ff-serif);font-size:21px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.piano-feat .piano-name{color:var(--white)}
+.piano-sub{font-size:12.5px;color:var(--mid);margin-bottom:22px;line-height:1.45}
+.piano-feat .piano-sub{color:rgba(255,255,255,.65)}
+.piano-div{height:1px;background:var(--border);margin-bottom:18px}
+.piano-feat .piano-div{background:rgba(255,255,255,.2)}
+.features{list-style:none;display:flex;flex-direction:column;gap:9px}
+.feat{display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.45;color:var(--mid)}
+.piano-feat .feat{color:rgba(255,255,255,.82)}
+.feat-ico{flex-shrink:0;font-style:normal;font-size:13px;margin-top:1px}
+.feat-y .feat-ico{color:var(--green)}
+.piano-feat .feat-y .feat-ico{color:var(--lime)}
+.feat-n{opacity:.38}
+.piano-btn{display:block;text-align:center;margin-top:24px;padding:11px;border-radius:100px;font-size:13.5px;font-weight:500;border:1.5px solid var(--border);color:var(--navy);transition:all .15s}
+.piano-btn:hover{border-color:var(--green);color:var(--green)}
+.piano-feat .piano-btn{background:var(--white);border-color:var(--white);color:var(--green)}
+.piano-feat .piano-btn:hover{background:var(--lime);border-color:var(--lime);color:var(--navy)}
+
+/* BLOG */
+.blog-g{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.bc{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .15s,transform .15s}
+.bc:hover{border-color:var(--lime);transform:translateY(-3px)}
+.bc-img{height:150px;display:flex;align-items:flex-end;padding:14px;position:relative}
+.bg1{background:linear-gradient(135deg,#0c3a2a 0%,#1B2B4A 100%)}
+.bg2{background:linear-gradient(135deg,#1B2B4A 0%,#2b1b42 100%)}
+.bg3{background:linear-gradient(135deg,#231408 0%,#1B2B4A 100%)}
+.bg4{background:linear-gradient(135deg,#083020 0%,#0E6F57 100%)}
+.bg5{background:linear-gradient(135deg,#1B2B4A 0%,#0c2820 100%)}
+.bg6{background:linear-gradient(135deg,#2e0e0e 0%,#1B2B4A 100%)}
+.bcat{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:100px;font-size:10.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.cat-seo{background:rgba(141,198,63,.15);color:#aee05a}
+.cat-geo{background:rgba(120,110,240,.2);color:#b8b0ff}
+.cat-auto{background:rgba(176,112,16,.2);color:#f5c05a}
+.cat-case{background:rgba(14,111,87,.2);color:#5dddb4}
+.cat-ads{background:rgba(165,45,45,.2);color:#ff9898}
+.cat-loc{background:rgba(41,130,220,.2);color:#80c4ff}
+.bc-body{padding:18px}
+.bc-t{font-family:var(--ff-serif);font-size:16px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:8px}
+.bc-ex{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bc-meta{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.bc-dot{width:3px;height:3px;border-radius:50%;background:var(--muted)}
+
+/* TEAM */
+.team-g{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.tc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:36px 28px;transition:border-color .2s,background .2s}
+.tc:hover{border-color:rgba(141,198,63,.4);background:rgba(255,255,255,.09)}
+.tc-av{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);font-size:22px;font-weight:700;color:var(--navy);background:var(--lime);margin-bottom:22px}
+.tc-name{font-family:var(--ff-serif);font-size:20px;font-weight:700;color:var(--white);margin-bottom:5px;line-height:1.2}
+.tc-role{font-size:13px;color:var(--lime);font-weight:500;margin-bottom:5px;letter-spacing:.02em}
+.tc-years{font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:16px}
+.tc-bio{font-size:14px;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:24px}
+.tc-skills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.tc-sk{padding:4px 12px;border:1px solid rgba(255,255,255,.15);border-radius:100px;font-size:11.5px;color:rgba(255,255,255,.55)}
+.tc-li{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.6);font-weight:400;transition:color .15s}
+.tc-li:hover{color:var(--lime)}
+.tc-li svg{width:16px;height:16px;fill:currentColor;opacity:.7}
+
+/* CTA */
+.cta-sec{background:var(--green);padding:92px 0;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before,.cta-sec::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(255,255,255,.06);pointer-events:none}
+.cta-sec::before{width:560px;height:560px}
+.cta-sec::after{width:860px;height:860px;border-color:rgba(255,255,255,.03)}
+.cta-sec>*{position:relative;z-index:1}
+.cta-h{font-family:var(--ff-serif);font-size:clamp(30px,4vw,50px);font-weight:700;color:var(--white);line-height:1.12;margin-bottom:14px}
+.cta-sub{font-size:17px;color:rgba(255,255,255,.72);margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto}
+.cta-note{margin-top:18px;font-size:13px;color:rgba(255,255,255,.45)}
+
+/* FOOTER */
+footer{background:var(--ink);padding:68px 0 36px}
+.foot-g{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:28px}
+.foot-name{font-family:var(--ff-serif);font-size:22px;font-weight:700;color:var(--white);margin-bottom:10px}
+.foot-tag{font-size:13.5px;color:rgba(255,255,255,.38);line-height:1.6;margin-bottom:20px}
+.foot-ct{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:7px}
+.foot-ct a{color:rgba(255,255,255,.45);transition:color .15s}
+.foot-ct a:hover{color:var(--lime)}
+.foot-h{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px}
+.foot-ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.foot-ul a{font-size:13.5px;color:rgba(255,255,255,.5);transition:color .15s}
+.foot-ul a:hover{color:var(--white)}
+.foot-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.foot-copy{font-size:12.5px;color:rgba(255,255,255,.28)}
+.foot-leg{display:flex;gap:20px}
+.foot-leg a{font-size:12.5px;color:rgba(255,255,255,.28);transition:color .15s}
+.foot-leg a:hover{color:rgba(255,255,255,.55)}
+
+/* SECTION UTILS */
+.sh{max-width:580px}
+.sh-c{max-width:540px;margin:0 auto;text-align:center}
+.sh .h2{margin-bottom:14px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.au{animation:fadeUp .5s ease both}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
+
+@media(max-width:960px){
+  .hero-g,.prob-g{grid-template-columns:1fr}
+  .steps-g,.piani-g{grid-template-columns:1fr 1fr}
+  .blog-g,.team-g{grid-template-columns:1fr 1fr}
+  .foot-g{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .srv-g{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  section{padding:56px 0}
+  .hero-cards,.piani-g,.blog-g,.srv-g,.steps-g,.team-g{grid-template-columns:1fr}
+  .foot-g{grid-template-columns:1fr}
+  .piano-feat{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <div class="nav-in">
+      <a href="#" class="logo">
+        <svg style="height:50px;width:auto;" viewBox="0 0 431.7 210.7" xmlns="http://www.w3.org/2000/svg">
+          <path style="fill:#8DC63F;" d="M81,88c21,0,38.1,17.1,38.1,38.1c0,21-17.1,38.1-38.1,38.1c-21,0-38.1-17.1-38.1-38.1C42.9,105.1,60,88,81,88 M81,66.5c-32.9,0-59.6,26.7-59.6,59.6c0,32.9,26.7,59.6,59.6,59.6c32.9,0,59.6-26.7,59.6-59.6C140.6,93.2,113.9,66.5,81,66.5"/>
+          <path style="fill:#0E6F57;" d="M43.6,40L43.6,40c0,10,8.1,18.1,18.1,18.1h18.1V40c0-10-8.1-18.1-18.1-18.1h0C51.7,22,43.6,30.1,43.6,40z"/>
+          <circle style="fill:#1B2B4A;" cx="81" cy="126.1" r="20.7"/>
+          <path style="fill:#1B2B4A;" d="M204.4,153.1c-4.9,0-9.6-0.9-14.1-2.6c-4.5-1.8-8.6-4.4-12.1-7.9c-3.6-3.5-6.4-7.8-8.5-13c-2.1-5.2-3.1-11.3-3.1-18.3c0-6.9,1-12.9,3.1-18.2c2.1-5.2,4.9-9.5,8.5-13c3.6-3.5,7.7-6.1,12.2-7.9c4.5-1.8,9.2-2.7,14-2.7c4.9,0,9.6,0.9,14.1,2.6c4.5,1.7,8.6,4.3,12.1,7.8c3.6,3.5,6.4,7.9,8.5,13.1c2.1,5.3,3.1,11.4,3.1,18.3c0,6.8-1,12.8-3.1,18.1c-2.1,5.3-4.9,9.6-8.5,13.1c-3.6,3.5-7.6,6.1-12.1,7.9C214,152.2,209.3,153.1,204.4,153.1z M204.4,150.6c4.4,0,8-1.2,10.7-3.5c2.7-2.4,4.7-6.4,5.9-12.1c1.2-5.7,1.9-13.6,1.9-23.6c0-10.1-0.6-18-1.9-23.7c-1.2-5.7-3.2-9.8-5.9-12.1c-2.7-2.4-6.3-3.6-10.7-3.6c-4.3,0-7.8,1.2-10.6,3.6c-2.7,2.4-4.7,6.4-5.9,12.1c-1.2,5.7-1.9,13.6-1.9,23.7c0,10,0.6,17.9,1.9,23.6c1.2,5.7,3.2,9.8,5.9,12.1C196.6,149.4,200.1,150.6,204.4,150.6z"/>
+          <path style="fill:#1B2B4A;" d="M266.9,152.5l-20.3-1.6v-1.2l1.2-0.2c3.1-0.7,4.7-2.7,4.7-6V79.2c0-1.7-0.3-3-0.8-3.8c-0.5-0.9-1.6-1.5-3.2-1.8l-1.7-0.5v-1.2l21.4-5.2l1.4,1.1l-0.5,16.9v12.1c2.7-1.8,5.5-3.2,8.7-4.1c3.1-0.9,6.3-1.4,9.5-1.4c4.6,0,8.6,1.1,12.1,3.2c3.5,2.1,6.3,5.4,8.4,9.9c2,4.5,3.1,10.2,3.1,17.1c0,7-1.1,12.8-3.4,17.4c-2.3,4.6-5.3,8.1-9.1,10.4c-3.8,2.3-8,3.5-12.6,3.5c-3,0-5.9-0.4-9-1.2c-3-0.8-5.7-1.9-8-3.4L266.9,152.5z M279.8,148.6c2.6,0,4.8-0.8,6.7-2.4c1.9-1.6,3.4-4.4,4.6-8.2c1.1-3.9,1.7-9.2,1.7-16c0-6.8-0.5-12.1-1.6-15.7c-1-3.7-2.5-6.3-4.4-7.7c-1.9-1.4-4.1-2.2-6.8-2.2c-3.8,0-7.2,1-10.5,3.1v46.2c1.5,1,3.1,1.7,4.7,2.2C275.9,148.4,277.7,148.6,279.8,148.6z"/>
+          <path style="fill:#1B2B4A;" d="M316.1,150.9v-1.2l1.4-0.5c2.9-1,4.3-3,4.3-6V78.9c0-1.6-0.3-2.8-1-3.7s-1.8-1.5-3.4-1.9L316,73v-1.2l22-5.2l1.4,1.1l-0.5,16.8v41.1c0,3,0,5.9,0.1,8.8c0,2.9,0.1,5.8,0.1,8.7c0,1.6,0.3,2.9,1,3.9c0.6,1,1.7,1.7,3.2,2.2l1.6,0.4v1.2H316.1z"/>
+          <path style="fill:#1B2B4A;" d="M380.6,152.7c-6.1,0-11.4-1.3-15.9-3.8c-4.5-2.5-8-6.1-10.4-10.8c-2.4-4.6-3.7-10.1-3.7-16.3s1.3-11.7,3.9-16.2c2.6-4.6,6.2-8.1,10.7-10.6c4.5-2.5,9.6-3.7,15.3-3.7c5.7,0,10.8,1.2,15.3,3.7c4.5,2.4,8,5.9,10.6,10.5c2.6,4.6,3.9,10,3.9,16.3c0,6.3-1.2,11.8-3.7,16.4c-2.4,4.6-5.9,8.2-10.3,10.7C391.9,151.5,386.6,152.7,380.6,152.7z M385.2,83.3c-1.8-1.4-3.8-2.9-6.2-4.8c-2.4-1.8-5.2-3.9-8.6-6.3c-2.5-1.8-4.3-3.3-5.3-4.6c-1.1-1.3-1.6-2.7-1.6-4.3c0-1.4,0.6-2.7,1.7-3.7c1.2-1,2.5-1.5,4-1.5c1.6,0,3.1,0.6,4.4,1.7c1.3,1.2,2.6,3,3.9,5.6c2,3.8,3.7,7,5.2,9.6c1.4,2.6,2.8,4.9,4,7L385.2,83.3z M380.6,150.3c2.8,0,5-0.8,6.7-2.4c1.7-1.6,2.9-4.5,3.7-8.5c0.8-4.1,1.1-9.9,1.1-17.3c0-7.5-0.4-13.3-1.1-17.4c-0.8-4.1-2-6.9-3.7-8.5c-1.7-1.6-3.9-2.4-6.7-2.4c-2.8,0-5.1,0.8-6.8,2.4s-3,4.4-3.7,8.5c-0.8,4.1-1.1,9.9-1.1,17.4c0,7.5,0.4,13.2,1.1,17.3c0.8,4.1,2,6.9,3.7,8.5C375.5,149.5,377.7,150.3,380.6,150.3z"/>
+          <path style="fill:#0E6F57;" d="M168.1,177.6L168.1,177.6c0-4.5,3.3-7.2,6.5-7.2c2.5,0,4.2,1.4,5.2,2.9v-8.3h2v19.3h-2v-2.8c-1.1,1.6-2.7,3-5.2,3C171.3,184.7,168.1,182.1,168.1,177.6z M179.9,177.6L179.9,177.6c0-3.2-2.4-5.3-4.9-5.3c-2.6,0-4.8,2-4.8,5.3v0.1c0,3.2,2.2,5.3,4.8,5.3C177.5,182.9,179.9,180.8,179.9,177.6z"/>
+          <path style="fill:#0E6F57;" d="M186.5,165.5h2.3v2.2h-2.3V165.5z M186.6,170.8h2v13.7h-2V170.8z"/>
+          <path style="fill:#0E6F57;" d="M193.2,186.8l0.9-1.6c1.6,1.1,3.3,1.7,5.3,1.7c3,0,5-1.7,5-4.9v-1.6c-1.2,1.6-2.9,2.9-5.4,2.9c-3.3,0-6.4-2.5-6.4-6.4v-0.1c0-4,3.2-6.5,6.4-6.5c2.6,0,4.2,1.3,5.3,2.8v-2.5h2v11.3c0,2.1-0.6,3.7-1.7,4.8c-1.2,1.2-3,1.8-5.2,1.8C197.2,188.7,195,188.1,193.2,186.8z M204.4,177L204.4,177c0-2.9-2.4-4.7-5-4.7s-4.7,1.8-4.7,4.6v0.1c0,2.8,2.2,4.7,4.7,4.7C202,181.6,204.4,179.7,204.4,177z"/>
+          <path style="fill:#0E6F57;" d="M211,165.5h2.3v2.2H211V165.5z M211.1,170.8h2v13.7h-2V170.8z"/>
+          <path style="fill:#0E6F57;" d="M218.6,180.8v-8.3h-1.9v-1.8h1.9v-4.1h2v4.1h4.3v1.8h-4.3v8c0,1.7,0.9,2.3,2.3,2.3c0.7,0,1.3-0.1,2-0.5v1.7c-0.7,0.4-1.5,0.6-2.5,0.6C220.3,184.7,218.6,183.6,218.6,180.8z"/>
+          <path style="fill:#0E6F57;" d="M227.5,180.5L227.5,180.5c0-3,2.4-4.5,5.8-4.5c1.7,0,3,0.2,4.2,0.6v-0.4c0-2.4-1.5-3.7-4-3.7c-1.6,0-2.9,0.4-4.2,1l-0.6-1.7c1.5-0.7,3-1.2,5-1.2c1.9,0,3.4,0.5,4.4,1.5c1,1,1.4,2.3,1.4,4v8.4h-2v-2c-1,1.2-2.5,2.3-4.9,2.3C230.1,184.7,227.5,183.3,227.5,180.5z M237.6,179.4v-1.3c-1-0.3-2.3-0.6-4-0.6c-2.5,0-4,1.1-4,2.8v0.1c0,1.7,1.6,2.7,3.4,2.7C235.6,183.1,237.6,181.6,237.6,179.4z"/>
+          <path style="fill:#0E6F57;" d="M244.1,165.1h2v19.3h-2V165.1z"/>
+          <path style="fill:#0E6F57;" d="M279.4,170.8h2v2.3c0.9-1.3,2.1-2.6,4.4-2.6c2.2,0,3.7,1.2,4.4,2.7c1-1.5,2.4-2.7,4.8-2.7c3.1,0,5.1,2.1,5.1,5.5v8.5h-2v-8c0-2.6-1.3-4.1-3.5-4.1c-2.1,0-3.8,1.5-3.8,4.2v7.9h-2v-8c0-2.6-1.3-4.1-3.5-4.1c-2.2,0-3.8,1.8-3.8,4.3v7.8h-2V170.8z"/>
+          <path style="fill:#0E6F57;" d="M303.5,180.5L303.5,180.5c0-3,2.4-4.5,5.8-4.5c1.7,0,3,0.2,4.2,0.6v-0.4c0-2.4-1.5-3.7-4-3.7c-1.6,0-2.9,0.4-4.2,1l-0.6-1.7c1.5-0.7,3-1.2,5-1.2c1.9,0,3.4,0.5,4.4,1.5c1,1,1.4,2.3,1.4,4v8.4h-2v-2c-1,1.2-2.5,2.3-4.9,2.3C306,184.7,303.5,183.3,303.5,180.5z M313.5,179.4v-1.3c-1-0.3-2.3-0.6-4-0.6c-2.5,0-4,1.1-4,2.8v0.1c0,1.7,1.6,2.7,3.4,2.7C311.5,183.1,313.5,181.6,313.5,179.4z"/>
+          <path style="fill:#0E6F57;" d="M319.8,170.8h2v3.6c1-2.3,3-3.9,5.6-3.8v2.2h-0.2c-3,0-5.4,2.1-5.4,6.3v5.4h-2V170.8z"/>
+          <path style="fill:#0E6F57;" d="M330.5,165.1h2v13.3l7.4-7.7h2.5l-5.7,5.9l5.9,7.8h-2.4l-4.9-6.4l-2.8,2.8v3.6h-2V165.1z"/>
+          <path style="fill:#0E6F57;" d="M351,183c1.9,0,3.2-0.8,4.3-1.9l1.3,1.1c-1.4,1.5-3,2.6-5.6,2.6c-3.8,0-6.8-2.9-6.8-7.1c0-4,2.8-7.1,6.6-7.1c4,0,6.4,3.2,6.4,7.2c0,0.2,0,0.4,0,0.7h-10.8C346.4,181.3,348.6,183,351,183z M355,176.8c-0.2-2.5-1.7-4.6-4.4-4.6c-2.4,0-4.2,2-4.4,4.6H355z"/>
+          <path style="fill:#0E6F57;" d="M361.3,180.8v-8.3h-1.9v-1.8h1.9v-4.1h2v4.1h4.3v1.8h-4.3v8c0,1.7,0.9,2.3,2.3,2.3c0.7,0,1.3-0.1,2-0.5v1.7c-0.7,0.4-1.5,0.6-2.5,0.6C363,184.7,361.3,183.6,361.3,180.8z"/>
+          <path style="fill:#0E6F57;" d="M371.3,165.5h2.3v2.2h-2.3V165.5z M371.5,170.8h2v13.7h-2V170.8z"/>
+          <path style="fill:#0E6F57;" d="M378.2,170.8h2v2.4c0.9-1.5,2.3-2.7,4.7-2.7c3.3,0,5.2,2.2,5.2,5.5v8.5h-2v-8c0-2.5-1.4-4.1-3.8-4.1c-2.4,0-4.1,1.7-4.1,4.3v7.8h-2V170.8z"/>
+          <path style="fill:#0E6F57;" d="M394.4,186.8l0.9-1.6c1.6,1.1,3.3,1.7,5.3,1.7c3,0,5-1.7,5-4.9v-1.6c-1.2,1.6-2.9,2.9-5.4,2.9c-3.3,0-6.4-2.5-6.4-6.4v-0.1c0-4,3.2-6.5,6.4-6.5c2.6,0,4.2,1.3,5.3,2.8v-2.5h2v11.3c0,2.1-0.6,3.7-1.7,4.8c-1.2,1.2-3,1.8-5.2,1.8C398.3,188.7,396.2,188.1,394.4,186.8z M405.6,177L405.6,177c0-2.9-2.4-4.7-5-4.7c-2.6,0-4.7,1.8-4.7,4.6v0.1c0,2.8,2.2,4.7,4.7,4.7C403.1,181.6,405.6,179.7,405.6,177z"/>
+          <path style="fill:#0E6F57;" d="M259.4,175.2L259.4,175.2c0-2,1.6-3.5,3.5-3.5c1.8,0,3.5,1.5,3.5,3.4v0.1c0,1.9-1.6,3.4-3.5,3.4C260.9,178.6,259.4,177.1,259.4,175.2z"/>
+        </svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#metodo">Come lavoriamo</a></li>
+        <li><a href="#pacchetti">Pacchetti</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contatti" class="nav-pill">Parliamoci →</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-g">
+      <div>
+        <div class="hero-badge au"><i></i>Partner di crescita per le imprese della Basilicata</div>
+        <h1 class="h1 hero-h au d1">Il tuo business merita<br><em>di essere trovato.</em></h1>
+        <p class="lead au d2">Costruiamo sistemi digitali che portano clienti, automatizzano il lavoro ripetitivo e misurano ogni risultato. Senza tecnicismi, senza sorprese.</p>
+        <div class="hero-actions au d3">
+          <a href="#contatti" class="btn btn-g">Analisi gratuita della tua presenza →</a>
+          <a href="#metodo" class="btn btn-out">Come lavoriamo</a>
+        </div>
+      </div>
+      <div class="hero-cards au d2">
+        <div class="hc">
+          <div class="hc-num">78%</div>
+          <div class="hc-lbl">delle PMI lucane senza strategia digitale strutturata</div>
+        </div>
+        <div class="hc hc-accent">
+          <div class="hc-num">0</div>
+          <div class="hc-lbl">competitor posizionati come AI agency in Basilicata</div>
+        </div>
+        <div class="hc">
+          <div class="hc-num">5×</div>
+          <div class="hc-lbl">valore medio di un cliente acquisito tramite canali digitali</div>
+        </div>
+        <div class="hc">
+          <div class="hc-num">18K</div>
+          <div class="hc-lbl">PMI in Basilicata. La finestra è aperta.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAGLINE BAR -->
+<div class="tbar">
+  <div class="wrap">
+    <div class="tbar-track">
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Studi medici e dentistici</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Turismo e hospitality</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Agroalimentare</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Professionisti e studi legali</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Retail e commercio locale</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Edilizia e impiantistica</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Servizi alle imprese</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>PMI strutturate</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Studi medici e dentistici</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Turismo e hospitality</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Agroalimentare</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Professionisti e studi legali</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Retail e commercio locale</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Edilizia e impiantistica</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>Servizi alle imprese</span>
+      <span class="tsep">·</span><span class="tpill"><span class="tpill-dot"></span>PMI strutturate</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVIZI -->
+<section id="servizi">
+  <div class="wrap">
+    <div class="sh">
+      <span class="eyebrow">Cosa facciamo</span>
+      <h2 class="h2">Sei servizi. Un sistema integrato.</h2>
+      <p class="lead" style="margin-top:12px">Ogni servizio funziona da solo. Insieme, si moltiplicano.</p>
+    </div>
+    <div class="srv-g">
+      <div class="srv">
+        <div class="srv-ico">🌐</div>
+        <div class="srv-t">Siti web che convertono</div>
+        <div class="srv-d">Design professionale mobile-first, SEO on-page, schema markup, Core Web Vitals ottimizzati. Non solo bello – costruito per trasformare visitatori in clienti.</div>
+        <span class="srv-tag">Sviluppo web</span>
+      </div>
+      <div class="srv">
+        <div class="srv-ico">📍</div>
+        <div class="srv-t">SEO locale e GEO</div>
+        <div class="srv-d">Posizionamento organico su Google per le ricerche locali. E ottimizzazione per essere citati nelle risposte AI – ChatGPT, Gemini, Perplexity e AI Overviews.</div>
+        <span class="srv-tag">Visibilità organica</span>
+      </div>
+      <div class="srv">
+        <div class="srv-ico">📱</div>
+        <div class="srv-t">Social media con strategia</div>
+        <div class="srv-d">Piano editoriale mensile, contenuti prodotti e revisionati da voi in 5 minuti su WhatsApp. Approvazione semplice. Zero riunioni infinite.</div>
+        <span class="srv-tag">Content & social</span>
+      </div>
+      <div class="srv">
+        <div class="srv-ico">⚡</div>
+        <div class="srv-t">Automazioni WhatsApp</div>
+        <div class="srv-d">Reminder appuntamenti, raccolta recensioni, richiami periodici. Sistemi automatici che lavorano mentre voi lavorate – e riducono i no-show del 30–40%.</div>
+        <span class="srv-tag">Marketing automation</span>
+      </div>
+      <div class="srv">
+        <div class="srv-ico">📢</div>
+        <div class="srv-t">Advertising locale</div>
+        <div class="srv-d">Google Ads e Meta Ads con target geografico preciso. Budget trasparente – ogni euro speso è rendicontato. Nessun margine nascosto sul budget pubblicitario.</div>
+        <span class="srv-tag">Paid media</span>
+      </div>
+      <div class="srv">
+        <div class="srv-ico">🔍</div>
+        <div class="srv-t">Consulenza strategica AI</div>
+        <div class="srv-d">Analisi della presenza digitale, roadmap di crescita, opportunità di mercato. Il punto di vista di chi porta 60 anni di esperienza su casi reali.</div>
+        <span class="srv-tag">Strategy & AI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COME LAVORIAMO -->
+<section class="s-white" id="metodo">
+  <div class="wrap">
+    <div class="sh">
+      <span class="eyebrow">Il metodo</span>
+      <h2 class="h2">Il vostro impegno: 15 minuti al mese.</h2>
+      <p class="lead" style="margin-top:12px">Lavoriamo per voi, non con voi. Il vostro tempo è per i vostri clienti.</p>
+    </div>
+    <div class="steps-g">
+      <div class="step">
+        <span class="step-n">01</span>
+        <div class="step-t">Brief iniziale</div>
+        <div class="step-d">Una sola call per raccogliere storia, valori, clienti e obiettivi. Nessun questionario, nessuna preparazione richiesta.</div>
+        <span class="step-time">⏱ 45 min · una sola volta</span>
+      </div>
+      <div class="step">
+        <span class="step-n">02</span>
+        <div class="step-t">Approvazione sito</div>
+        <div class="step-d">Vi inviamo un link sul vostro smartphone. Guardate, dite cosa cambiare con una nota vocale su WhatsApp. Il resto lo facciamo noi.</div>
+        <span class="step-time">⏱ 20 min · una sola volta</span>
+      </div>
+      <div class="step">
+        <span class="step-n">03</span>
+        <div class="step-t">Contenuti mensili</div>
+        <div class="step-d">Ogni 25 del mese ricevete i post del mese su WhatsApp. Un semplice "OK" approva tutto. Silenzio = approvazione automatica dopo 48 ore.</div>
+        <span class="step-time">⏱ 5–10 min al mese</span>
+      </div>
+      <div class="step">
+        <span class="step-n">04</span>
+        <div class="step-t">Report mensile</div>
+        <div class="step-d">Il 1° del mese ricevete un PDF: visite al sito, posizione Google, nuove recensioni, contatti ricevuti. Solo i numeri che contano davvero.</div>
+        <span class="step-time">⏱ 5 min al mese</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACCHETTI -->
+<section id="pacchetti">
+  <div class="wrap">
+    <div class="sh-c">
+      <span class="eyebrow">Pacchetti</span>
+      <h2 class="h2">Un piano per ogni fase di crescita.</h2>
+      <p class="lead" style="margin-top:12px">Tutti i materiali restano vostri. Nessun vincolo automatico dopo i 3 mesi.</p>
+    </div>
+    <div class="piani-g">
+
+      <div class="piano">
+        <div class="piano-name">Starter</div>
+        <div class="piano-sub">Le fondamenta digitali per iniziare nel modo giusto</div>
+        <div class="piano-div"></div>
+        <ul class="features">
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Sito web professionale</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Google My Business ottimizzato</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Setup profilo Instagram</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Report mensile PDF</li>
+          <li class="feat feat-n"><span class="feat-ico">✕</span>Social management mensile</li>
+          <li class="feat feat-n"><span class="feat-ico">✕</span>Automazioni WhatsApp</li>
+          <li class="feat feat-n"><span class="feat-ico">✕</span>Advertising gestito</li>
+          <li class="feat feat-n"><span class="feat-ico">✕</span>SEO continuativa</li>
+        </ul>
+        <a href="#contatti" class="piano-btn">Inizia →</a>
+      </div>
+
+      <div class="piano piano-feat">
+        <div class="piano-badge">Più scelto</div>
+        <div class="piano-name">Core</div>
+        <div class="piano-sub">Il sistema completo per crescere ogni mese in modo misurabile</div>
+        <div class="piano-div"></div>
+        <ul class="features">
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Tutto del piano Starter</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Social management mensile</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Automazioni WhatsApp attive</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>SEO locale (7 keyword)</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>2 articoli blog al mese</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Sistema raccolta recensioni</li>
+          <li class="feat feat-n"><span class="feat-ico">✕</span>Advertising gestito</li>
+          <li class="feat feat-n"><span class="feat-ico">✕</span>Call strategica mensile</li>
+        </ul>
+        <a href="#contatti" class="piano-btn">Inizia →</a>
+      </div>
+
+      <div class="piano">
+        <div class="piano-name">Growth</div>
+        <div class="piano-sub">Per chi vuole accelerare con Google Ads e Meta Ads</div>
+        <div class="piano-div"></div>
+        <ul class="features">
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Tutto del piano Core</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Google Ads locale gestito</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Meta Ads gestito</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>SEO avanzata (15 keyword)</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Dashboard live 24/7</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Call strategica mensile 30'</li>
+          <li class="feat feat-n"><span class="feat-ico">✕</span>Canale YouTube</li>
+          <li class="feat feat-n"><span class="feat-ico">✕</span>Supporto prioritario</li>
+        </ul>
+        <a href="#contatti" class="piano-btn">Inizia →</a>
+      </div>
+
+      <div class="piano">
+        <div class="piano-name">Partner</div>
+        <div class="piano-sub">Per aziende strutturate con obiettivi di crescita ambiziosi</div>
+        <div class="piano-div"></div>
+        <ul class="features">
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Tutto del piano Growth</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Canale YouTube + video SEO</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>CRM e lead nurturing</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Supporto prioritario (4h)</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Call bisettimanale strategica</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>GEO optimization</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Reportistica avanzata</li>
+          <li class="feat feat-y"><span class="feat-ico">✓</span>Accesso anticipato novità</li>
+        </ul>
+        <a href="#contatti" class="piano-btn">Parliamoci →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="s-white" id="blog">
+  <div class="wrap">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:0">
+      <div class="sh">
+        <span class="eyebrow">Risorse</span>
+        <h2 class="h2">Idee concrete per crescere.</h2>
+      </div>
+      <a href="#" style="font-size:13.5px;color:var(--green);font-weight:500;white-space:nowrap;padding-bottom:4px">Tutti gli articoli →</a>
+    </div>
+    <div class="blog-g">
+
+      <div class="bc">
+        <div class="bc-img bg1"><span class="bcat cat-seo">SEO locale</span></div>
+        <div class="bc-body">
+          <div class="bc-t">Come scegliere un'agenzia di marketing a Potenza – guida 2026</div>
+          <div class="bc-ex">Cosa guardare, cosa evitare e le domande giuste da fare prima di firmare qualsiasi contratto con un'agenzia locale.</div>
+          <div class="bc-meta"><span>Maggio 2026</span><span class="bc-dot"></span><span>6 min</span></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img bg2"><span class="bcat cat-auto">Automazione</span></div>
+        <div class="bc-body">
+          <div class="bc-t">WhatsApp automatico per PMI: come funziona e quanto costa davvero</div>
+          <div class="bc-ex">Reminder, recensioni, richiami. Tutto quello che serve sapere prima di attivare le automazioni nella tua attività.</div>
+          <div class="bc-meta"><span>Maggio 2026</span><span class="bc-dot"></span><span>7 min</span></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img bg3"><span class="bcat cat-case">Caso studio</span></div>
+        <div class="bc-body">
+          <div class="bc-t">Da invisibile a top 3 Google: il caso Studio Genovese Potenza</div>
+          <div class="bc-ex">39 recensioni a 4,9 stelle e zero presenza online. Come uno studio dentistico ha iniziato a ricevere 10+ contatti digitali al mese.</div>
+          <div class="bc-meta"><span>Giugno 2026</span><span class="bc-dot"></span><span>8 min</span></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img bg4"><span class="bcat cat-geo">GEO 2026</span></div>
+        <div class="bc-body">
+          <div class="bc-t">Come essere trovati su Google AI e ChatGPT a Potenza nel 2026</div>
+          <div class="bc-ex">Le AI Overview ora appaiono nel 48% delle ricerche italiane. Ecco cosa cambia e come ottimizzare senza stravolgere la SEO.</div>
+          <div class="bc-meta"><span>Giugno 2026</span><span class="bc-dot"></span><span>9 min</span></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img bg5"><span class="bcat cat-loc">Marketing locale</span></div>
+        <div class="bc-body">
+          <div class="bc-t">Quanto costa il marketing digitale in Basilicata nel 2026</div>
+          <div class="bc-ex">Una guida onesta ai prezzi reali: sito, social management, Ads, automazioni. Con range verificati e cosa aspettarsi per ogni budget.</div>
+          <div class="bc-meta"><span>Aprile 2026</span><span class="bc-dot"></span><span>5 min</span></div>
+        </div>
+      </div>
+
+      <div class="bc">
+        <div class="bc-img bg6"><span class="bcat cat-ads">Advertising</span></div>
+        <div class="bc-body">
+          <div class="bc-t">Meta Ads per studi medici: risultati reali con 300€ al mese</div>
+          <div class="bc-ex">Benchmark CPL, struttura campagne e conformità deontologica. Tutto quello che un professionista sanitario deve sapere prima di investire in Ads.</div>
+          <div class="bc-meta"><span>Aprile 2026</span><span class="bc-dot"></span><span>10 min</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="s-dark" id="team">
+  <div class="wrap">
+    <div class="sh">
+      <span class="eyebrow eyebrow-lt">Il team</span>
+      <h2 class="h2" style="color:var(--white)">Tre specialisti.<br>Nessun intermediario.</h2>
+      <p class="lead" style="color:rgba(255,255,255,.55);margin-top:12px">Strategia, design e sviluppo in un unico team. Ogni cliente ha un interlocutore diretto per ogni aspetto del progetto.</p>
+    </div>
+    <div class="team-g">
+
+      <div class="tc">
+        <div class="tc-av">A</div>
+        <div class="tc-name">Antonello</div>
+        <div class="tc-role">Strategia & Relazione Cliente</div>
+        <div class="tc-years">20+ anni · Potenza</div>
+        <div class="tc-bio">Laureato in Scienze della Comunicazione, ha guidato strategie per aziende con milioni di euro di fatturato. Si occupa di strategia digitale, relazioni con i clienti e produzione contenuti con AI.</div>
+        <div class="tc-skills">
+          <span class="tc-sk">Digital Strategy</span><span class="tc-sk">SEO & GEO</span><span class="tc-sk">Content</span><span class="tc-sk">Account</span>
+        </div>
+        <a href="#" class="tc-li">LinkedIn →</a>
+      </div>
+
+      <div class="tc">
+        <div class="tc-av">C</div>
+        <div class="tc-name">Cristian</div>
+        <div class="tc-role">Sviluppo & Automazioni</div>
+        <div class="tc-years">25+ anni</div>
+        <div class="tc-bio">Senior web developer con una storia su progetti complessi per aziende strutturate. Progetta e sviluppa i sistemi tecnici di Oblò: siti, automazioni, CRM e stack di marketing integrato.</div>
+        <div class="tc-skills">
+          <span class="tc-sk">Web Dev</span><span class="tc-sk">Automazioni</span><span class="tc-sk">CRM</span><span class="tc-sk">Analytics</span>
+        </div>
+        <a href="#" class="tc-li">LinkedIn →</a>
+      </div>
+
+      <div class="tc">
+        <div class="tc-av">R</div>
+        <div class="tc-name">Riccardo</div>
+        <div class="tc-role">Design & Identità Visiva</div>
+        <div class="tc-years">25+ anni</div>
+        <div class="tc-bio">Graphic designer senior con una carriera costruita su grandi clienti nazionali. Trasforma la strategia in forma visiva: loghi, siti, template, materiali commerciali con impatto immediato.</div>
+        <div class="tc-skills">
+          <span class="tc-sk">Brand Design</span><span class="tc-sk">UI/UX</span><span class="tc-sk">Identità visiva</span><span class="tc-sk">Print</span>
+        </div>
+        <a href="#" class="tc-li">LinkedIn →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contatti">
+  <div class="wrap">
+    <h2 class="cta-h">Pronti quando lo siete voi.</h2>
+    <p class="cta-sub">Un'analisi gratuita della vostra presenza digitale. 30 minuti. Nessun impegno. Solo dati reali e un piano concreto.</p>
+    <a href="mailto:info@obloworks.it" class="btn btn-w" style="font-size:16px;padding:15px 34px">Scrivici oggi →</a>
+    <div class="cta-note">Risposta entro 4 ore lavorative</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-g">
+      <div>
+        <svg style="height:60px;width:auto;margin-bottom:10px;" viewBox="0 0 431.7 210.7" xmlns="http://www.w3.org/2000/svg">
+          <path style="fill:#fff;" d="M81,88.1c21,0,38.1,17.1,38.1,38.1s-17.1,38.1-38.1,38.1-38.1-17.1-38.1-38.1,17.1-38.1,38.1-38.1M81,66.6c-32.9,0-59.6,26.7-59.6,59.6s26.7,59.6,59.6,59.6,59.6-26.7,59.6-59.6-26.7-59.6-59.6-59.6"/>
+          <g>
+            <g>
+              <path style="fill:#fff;" d="M168.1,177.7h0c0-4.5,3.3-7.2,6.5-7.2s4.2,1.4,5.2,2.9v-8.3h2v19.3h-2v-2.8c-1.1,1.6-2.7,3-5.2,3-3.3.2-6.5-2.4-6.5-6.9ZM179.9,177.7h0c0-3.2-2.4-5.3-4.9-5.3s-4.8,2-4.8,5.3h0c0,3.3,2.2,5.4,4.8,5.4,2.5-.1,4.9-2.2,4.9-5.4Z"/>
+              <path style="fill:#fff;" d="M186.5,165.6h2.3v2.2h-2.3v-2.2ZM186.6,170.9h2v13.7h-2v-13.7Z"/>
+              <path style="fill:#fff;" d="M193.2,186.9l.9-1.6c1.6,1.1,3.3,1.7,5.3,1.7,3,0,5-1.7,5-4.9v-1.6c-1.2,1.6-2.9,2.9-5.4,2.9s-6.4-2.5-6.4-6.4h0c0-4.1,3.2-6.6,6.4-6.6s4.2,1.3,5.3,2.8v-2.5h2v11.3c0,2.1-.6,3.7-1.7,4.8-1.2,1.2-3,1.8-5.2,1.8-2.2.2-4.4-.4-6.2-1.7ZM204.4,177.1h0c0-2.9-2.4-4.7-5-4.7s-4.7,1.8-4.7,4.6h0c0,2.9,2.2,4.8,4.7,4.8,2.6-.1,5-2,5-4.7Z"/>
+              <path style="fill:#fff;" d="M211,165.6h2.3v2.2h-2.3v-2.2ZM211.1,170.9h2v13.7h-2v-13.7Z"/>
+              <path style="fill:#fff;" d="M218.6,180.9v-8.3h-1.9v-1.8h1.9v-4.1h2v4.1h4.3v1.8h-4.3v8c0,1.7.9,2.3,2.3,2.3s1.3-.1,2-.5v1.7c-.7.4-1.5.6-2.5.6-2.1,0-3.8-1-3.8-3.8Z"/>
+              <path style="fill:#fff;" d="M227.5,180.6h0c0-3,2.4-4.5,5.8-4.5s3,.2,4.2.6v-.4c0-2.4-1.5-3.7-4-3.7s-2.9.4-4.2,1l-.6-1.7c1.5-.7,3-1.2,5-1.2s3.4.5,4.4,1.5,1.4,2.3,1.4,4v8.4h-2v-2c-1,1.2-2.5,2.3-4.9,2.3-2.5-.1-5.1-1.5-5.1-4.3ZM237.6,179.5v-1.3c-1-.3-2.3-.6-4-.6-2.5,0-4,1.1-4,2.8h0c0,1.8,1.6,2.8,3.4,2.8,2.6,0,4.6-1.5,4.6-3.7Z"/>
+              <path style="fill:#fff;" d="M244.1,165.2h2v19.3h-2v-19.3Z"/>
+              <path style="fill:#fff;" d="M259.4,175.3h0c0-2,1.6-3.5,3.5-3.5s3.5,1.5,3.5,3.4h0c0,2-1.6,3.5-3.5,3.5-2,0-3.5-1.5-3.5-3.4Z"/>
+              <path style="fill:#fff;" d="M279.4,170.9h2v2.3c.9-1.3,2.1-2.6,4.4-2.6s3.7,1.2,4.4,2.7c1-1.5,2.4-2.7,4.8-2.7s5.1,2.1,5.1,5.5v8.5h-2v-8c0-2.6-1.3-4.1-3.5-4.1s-3.8,1.5-3.8,4.2v7.9h-2v-8c0-2.6-1.3-4.1-3.5-4.1s-3.8,1.8-3.8,4.3v7.8h-2v-13.7h-.1Z"/>
+              <path style="fill:#fff;" d="M303.5,180.6h0c0-3,2.4-4.5,5.8-4.5s3,.2,4.2.6v-.4c0-2.4-1.5-3.7-4-3.7s-2.9.4-4.2,1l-.6-1.7c1.5-.7,3-1.2,5-1.2s3.4.5,4.4,1.5,1.4,2.3,1.4,4v8.4h-2v-2c-1,1.2-2.5,2.3-4.9,2.3-2.6-.1-5.1-1.5-5.1-4.3ZM313.5,179.5v-1.3c-1-.3-2.3-.6-4-.6-2.5,0-4,1.1-4,2.8h0c0,1.8,1.6,2.8,3.4,2.8,2.6,0,4.6-1.5,4.6-3.7Z"/>
+              <path style="fill:#fff;" d="M319.8,170.9h2v3.6c1-2.3,3-3.9,5.6-3.8v2.2h-.2c-3,0-5.4,2.1-5.4,6.3v5.4h-2v-13.7Z"/>
+              <path style="fill:#fff;" d="M330.5,165.2h2v13.3l7.4-7.7h2.5l-5.7,5.9,5.9,7.8h-2.4l-4.9-6.4-2.8,2.8v3.6h-2v-19.3Z"/>
+              <path style="fill:#fff;" d="M351,183.1c1.9,0,3.2-.8,4.3-1.9l1.3,1.1c-1.4,1.5-3,2.6-5.6,2.6-3.8,0-6.8-2.9-6.8-7.1s2.8-7.1,6.6-7.1,6.4,3.2,6.4,7.2v.7h-10.8c0,2.8,2.2,4.5,4.6,4.5ZM355,176.9c-.2-2.5-1.7-4.6-4.4-4.6s-4.2,2-4.4,4.6h8.8Z"/>
+              <path style="fill:#fff;" d="M361.3,180.9v-8.3h-1.9v-1.8h1.9v-4.1h2v4.1h4.3v1.8h-4.3v8c0,1.7.9,2.3,2.3,2.3s1.3-.1,2-.5v1.7c-.7.4-1.5.6-2.5.6-2.1,0-3.8-1-3.8-3.8Z"/>
+              <path style="fill:#fff;" d="M371.3,165.6h2.3v2.2h-2.3v-2.2ZM371.5,170.9h2v13.7h-2v-13.7Z"/>
+              <path style="fill:#fff;" d="M378.2,170.9h2v2.4c.9-1.5,2.3-2.7,4.7-2.7s5.2,2.2,5.2,5.5v8.5h-2v-8c0-2.5-1.4-4.1-3.8-4.1s-4.1,1.7-4.1,4.3v7.8h-2v-13.7h0Z"/>
+              <path style="fill:#fff;" d="M394.4,186.9l.9-1.6c1.6,1.1,3.3,1.7,5.3,1.7,3,0,5-1.7,5-4.9v-1.6c-1.2,1.6-2.9,2.9-5.4,2.9s-6.4-2.5-6.4-6.4h0c0-4.1,3.2-6.6,6.4-6.6s4.2,1.3,5.3,2.8v-2.5h2v11.3c0,2.1-.6,3.7-1.7,4.8-1.2,1.2-3,1.8-5.2,1.8-2.3.2-4.4-.4-6.2-1.7ZM405.6,177.1h0c0-2.9-2.4-4.7-5-4.7s-4.7,1.8-4.7,4.6h0c0,2.9,2.2,4.8,4.7,4.8,2.5-.1,5-2,5-4.7Z"/>
+            </g>
+            <g>
+              <path style="fill:#fff;" d="M204.4,153.2c-4.9,0-9.6-.9-14.1-2.6-4.5-1.8-8.6-4.4-12.1-7.9-3.6-3.5-6.4-7.8-8.5-13s-3.1-11.3-3.1-18.3,1-12.9,3.1-18.2c2.1-5.2,4.9-9.5,8.5-13s7.7-6.1,12.2-7.9,9.2-2.7,14-2.7,9.6.9,14.1,2.6,8.6,4.3,12.1,7.8c3.6,3.5,6.4,7.9,8.5,13.1,2.1,5.3,3.1,11.4,3.1,18.3s-1,12.8-3.1,18.1-4.9,9.6-8.5,13.1-7.6,6.1-12.1,7.9c-4.5,1.8-9.2,2.7-14.1,2.7ZM204.4,150.7c4.4,0,8-1.2,10.7-3.5,2.7-2.4,4.7-6.4,5.9-12.1,1.2-5.7,1.9-13.6,1.9-23.6s-.6-18-1.9-23.7c-1.2-5.7-3.2-9.8-5.9-12.1-2.7-2.4-6.3-3.6-10.7-3.6s-7.8,1.2-10.6,3.6c-2.7,2.4-4.7,6.4-5.9,12.1s-1.9,13.6-1.9,23.7.6,17.9,1.9,23.6c1.2,5.7,3.2,9.8,5.9,12.1,2.8,2.3,6.3,3.5,10.6,3.5Z"/>
+              <path style="fill:#fff;" d="M266.9,152.6l-20.3-1.6v-1.2l1.2-.2c3.1-.7,4.7-2.7,4.7-6v-64.3c0-1.7-.3-3-.8-3.8-.5-.9-1.6-1.5-3.2-1.8l-1.7-.5v-1.2l21.4-5.2,1.4,1.1-.5,16.9v12.1c2.7-1.8,5.5-3.2,8.7-4.1,3.1-.9,6.3-1.4,9.5-1.4,4.6,0,8.6,1.1,12.1,3.2s6.3,5.4,8.4,9.9c2,4.5,3.1,10.2,3.1,17.1s-1.1,12.8-3.4,17.4-5.3,8.1-9.1,10.4c-3.8,2.3-8,3.5-12.6,3.5s-5.9-.4-9-1.2c-3-.8-5.7-1.9-8-3.4l-1.9,4.3ZM279.8,148.7c2.6,0,4.8-.8,6.7-2.4,1.9-1.6,3.4-4.4,4.6-8.2,1.1-3.9,1.7-9.2,1.7-16s-.5-12.1-1.6-15.7c-1-3.7-2.5-6.3-4.4-7.7-1.9-1.4-4.1-2.2-6.8-2.2s-7.2,1-10.5,3.1v46.2c1.5,1,3.1,1.7,4.7,2.2,1.7.5,3.5.7,5.6.7Z"/>
+              <path style="fill:#fff;" d="M316.1,151v-1.2l1.4-.5c2.9-1,4.3-3,4.3-6v-64.3c0-1.6-.3-2.8-1-3.7s-1.8-1.5-3.4-1.9l-1.4-.3v-1.2l22-5.2,1.4,1.1-.5,16.8v41.1c0,3,0,5.9.1,8.8,0,2.9.1,5.8.1,8.7s.3,2.9,1,3.9c.6,1,1.7,1.7,3.2,2.2l1.6.4v1.2h-28.8Z"/>
+              <path style="fill:#fff;" d="M380.6,152.8c-6.1,0-11.4-1.3-15.9-3.8s-8-6.1-10.4-10.8c-2.4-4.6-3.7-10.1-3.7-16.3s1.3-11.7,3.9-16.2c2.6-4.6,6.2-8.1,10.7-10.6s9.6-3.7,15.3-3.7,10.8,1.2,15.3,3.7c4.5,2.4,8,5.9,10.6,10.5s3.9,10,3.9,16.3-1.2,11.8-3.7,16.4c-2.4,4.6-5.9,8.2-10.3,10.7-4.4,2.6-9.7,3.8-15.7,3.8ZM385.2,83.4c-1.8-1.4-3.8-2.9-6.2-4.8-2.4-1.8-5.2-3.9-8.6-6.3-2.5-1.8-4.3-3.3-5.3-4.6-1.1-1.3-1.6-2.7-1.6-4.3s.6-2.7,1.7-3.7c1.2-1,2.5-1.5,4-1.5s3.1.6,4.4,1.7c1.3,1.2,2.6,3,3.9,5.6,2,3.8,3.7,7,5.2,9.6,1.4,2.6,2.8,4.9,4,7l-1.5,1.3ZM380.6,150.4c2.8,0,5-.8,6.7-2.4,1.7-1.6,2.9-4.5,3.7-8.5.8-4.1,1.1-9.9,1.1-17.3s-.4-13.3-1.1-17.4c-.8-4.1-2-6.9-3.7-8.5s-3.9-2.4-6.7-2.4-5.1.8-6.8,2.4-3,4.4-3.7,8.5c-.8,4.1-1.1,9.9-1.1,17.4s.4,13.2,1.1,17.3c.8,4.1,2,6.9,3.7,8.5,1.7,1.6,3.9,2.4,6.8,2.4Z"/>
+            </g>
+          </g>
+          <circle style="fill:#fff;" cx="81" cy="126.2" r="20.7"/>
+          <path style="fill:#fff;" d="M43.6,40.1h0c0,10,8.1,18.1,18.1,18.1h18.1v-18.1c0-10-8.1-18.1-18.1-18.1h0c-10,.1-18.1,8.2-18.1,18.1Z"/>
+        </svg>
+        <div class="foot-tag">Marketing che funziona.<br>Tecnologia che semplifica.</div>
+        <div class="foot-ct">📍 <span>Potenza, Basilicata</span></div>
+        <div class="foot-ct">✉ <a href="mailto:info@obloworks.it">info@obloworks.it</a></div>
+      </div>
+      <div>
+        <div class="foot-h">Servizi</div>
+        <ul class="foot-ul">
+          <li><a href="#">Siti web</a></li>
+          <li><a href="#">SEO locale</a></li>
+          <li><a href="#">Social media</a></li>
+          <li><a href="#">Automazioni WhatsApp</a></li>
+          <li><a href="#">Google Ads</a></li>
+          <li><a href="#">Meta Ads</a></li>
+          <li><a href="#">Consulenza AI</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-h">Settori</div>
+        <ul class="foot-ul">
+          <li><a href="#">Studi medici</a></li>
+          <li><a href="#">Turismo</a></li>
+          <li><a href="#">Agroalimentare</a></li>
+          <li><a href="#">Professionisti</a></li>
+          <li><a href="#">Retail</a></li>
+          <li><a href="#">Edilizia</a></li>
+          <li><a href="#">PMI strutturate</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-h">Risorse</div>
+        <ul class="foot-ul">
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Casi studio</a></li>
+          <li><a href="#">Guida SEO locale</a></li>
+          <li><a href="#">Automazioni per PMI</a></li>
+          <li><a href="#">Chi siamo</a></li>
+          <li><a href="#">Contatti</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-copy">© 2026 Oblò – Potenza, Basilicata. Tutti i diritti riservati.</div>
+      <div class="foot-leg">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">P.IVA [xxxxxx]</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
