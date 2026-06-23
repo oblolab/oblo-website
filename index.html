@@ -751,20 +751,22 @@ footer{background:var(--ink);padding:68px 0 36px}
   }
 
   fetch(GHOST + '/ghost/api/content/posts/?key=' + KEY +
-        '&limit=6&fields=title,slug,excerpt,feature_image,published_at,reading_time&include=tags')
+        '&limit=8&fields=title,slug,excerpt,feature_image,published_at,reading_time&include=tags')
     .then(function(r){ return r.json(); })
     .then(function(data){
-      var posts = data.posts;
-      if (!posts || !posts.length) return;
+      var posts = (data.posts || []).filter(function(p){ return p.slug !== 'coming-soon'; }).slice(0,6);
+      if (!posts.length) return;
       grid.innerHTML = posts.map(function(post, i){
         var tag = post.tags && post.tags[0] ? post.tags[0].name : '';
         var url = GHOST + '/' + post.slug + '/';
-        var bg  = post.feature_image
-          ? 'url("' + esc(post.feature_image) + '") center/cover no-repeat'
-          : GRADIENTS[i % GRADIENTS.length];
+        var imgHtml = post.feature_image
+          ? '<img src="' + esc(post.feature_image) + '" alt="' + esc(post.title) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">'
+          : '';
+        var bgStyle = post.feature_image ? '' : 'background:' + GRADIENTS[i % GRADIENTS.length] + ';';
         return '<a href="' + url + '" class="bc" style="display:block;text-decoration:none;color:inherit">' +
-          '<div class="bc-img" style="background:' + bg + '">' +
-            (tag ? '<span class="bcat" style="background:rgba(141,198,63,.18);color:#aee05a">' + esc(tag) + '</span>' : '') +
+          '<div class="bc-img" style="' + bgStyle + 'overflow:hidden;position:relative">' +
+            imgHtml +
+            (tag ? '<span class="bcat" style="position:relative;z-index:1;background:rgba(141,198,63,.2);color:#aee05a">' + esc(tag) + '</span>' : '') +
           '</div>' +
           '<div class="bc-body">' +
             '<div class="bc-t">' + esc(post.title) + '</div>' +
@@ -774,7 +776,7 @@ footer{background:var(--ink);padding:68px 0 36px}
               (post.reading_time ? '<span class="bc-dot"></span><span>' + post.reading_time + ' min</span>' : '') +
             '</div>' +
           '</div>' +
-          '</a>';
+        '</a>';
       }).join('');
     })
     .catch(function(){});
