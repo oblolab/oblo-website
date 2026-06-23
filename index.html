@@ -724,5 +724,62 @@ footer{background:var(--ink);padding:68px 0 36px}
   </div>
 </footer>
 
+<script>
+(function(){
+  var GHOST = 'http://ghost-wfy1dkwem0qr1izjfcica8wm.178.18.247.74.sslip.io';
+  var KEY   = '1ac77f02bf87cd4a69d84c71cc';
+  var grid  = document.querySelector('.blog-g');
+  if (!grid) return;
+
+  var MONTHS = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+                'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+  var GRADIENTS = [
+    'linear-gradient(135deg,#0c3a2a,#1B2B4A)',
+    'linear-gradient(135deg,#1B2B4A,#2b1b42)',
+    'linear-gradient(135deg,#231408,#1B2B4A)',
+    'linear-gradient(135deg,#083020,#0E6F57)',
+    'linear-gradient(135deg,#1B2B4A,#0c2820)',
+    'linear-gradient(135deg,#2e0e0e,#1B2B4A)'
+  ];
+
+  function esc(s) {
+    return s ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : '';
+  }
+  function formatDate(iso) {
+    var d = new Date(iso);
+    return MONTHS[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
+  fetch(GHOST + '/ghost/api/content/posts/?key=' + KEY +
+        '&limit=6&fields=title,slug,excerpt,feature_image,published_at,reading_time&include=tags')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var posts = data.posts;
+      if (!posts || !posts.length) return;
+      grid.innerHTML = posts.map(function(post, i){
+        var tag = post.tags && post.tags[0] ? post.tags[0].name : '';
+        var url = GHOST + '/' + post.slug + '/';
+        var bg  = post.feature_image
+          ? 'url("' + esc(post.feature_image) + '") center/cover no-repeat'
+          : GRADIENTS[i % GRADIENTS.length];
+        return '<a href="' + url + '" class="bc" style="display:block;text-decoration:none;color:inherit">' +
+          '<div class="bc-img" style="background:' + bg + '">' +
+            (tag ? '<span class="bcat" style="background:rgba(141,198,63,.18);color:#aee05a">' + esc(tag) + '</span>' : '') +
+          '</div>' +
+          '<div class="bc-body">' +
+            '<div class="bc-t">' + esc(post.title) + '</div>' +
+            (post.excerpt ? '<div class="bc-ex">' + esc(post.excerpt) + '</div>' : '') +
+            '<div class="bc-meta">' +
+              '<span>' + formatDate(post.published_at) + '</span>' +
+              (post.reading_time ? '<span class="bc-dot"></span><span>' + post.reading_time + ' min</span>' : '') +
+            '</div>' +
+          '</div>' +
+          '</a>';
+      }).join('');
+    })
+    .catch(function(){});
+})();
+</script>
+
 </body>
 </html>
