@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /cms/
+Disallow: /articoli/
+Disallow: /blog_old_broken/
+Allow: /
+
+Sitemap: https://oblo.digital/sitemap.xml

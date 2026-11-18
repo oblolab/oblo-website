@@ -1,3 +1,3 @@
 FROM nginx:alpine
-COPY index.html /usr/share/nginx/html/index.html
+COPY index.html favicon.svg og-image.jpg robots.txt sitemap.xml /usr/share/nginx/html/
 EXPOSE 80
